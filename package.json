@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:SzybkiSasza/bartoszpolanczyk.git",
   "author": "Bartek Polanczyk <bartosz.polanczyk@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
 }
