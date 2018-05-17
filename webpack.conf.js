@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: "./src/website/index.tsx",
@@ -16,6 +17,14 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.scss$/,
+                use: [
+                    process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "sass-loader"
+                ]
+            },
+            {
                 test: /\.tsx?$/,
                 loader: "awesome-typescript-loader",
                 options: {
@@ -27,6 +36,7 @@ module.exports = {
                 test: /\.js$/,
                 loader: "source-map-loader"
             }
+
         ]
     },
 
@@ -39,6 +49,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Client main',
             template: 'src/website/index.html'
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         })
     ]
 };
