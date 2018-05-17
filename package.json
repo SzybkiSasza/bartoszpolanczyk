@@ -11,7 +11,7 @@
     "build-client": "webpack --config build-config/webpack-client.conf.js",
     "build-server": "webpack --config build-config/webpack-server.conf.js",
     "heroku-postbuild": "yarn build",
-    "lint": "tslint -p tsconfig-server.json -c tslint.json && eslint src && stylelint src/**/*.scss",
+    "lint": "tslint -p build-config/tsconfig-server.json -c tslint.json  && tslint -p build-config/tsconfig-client.json -c tslint.json && eslint src && stylelint src/**/*.scss",
     "start": "node ./dist/server/server.js"
   },
   "dependencies": {
