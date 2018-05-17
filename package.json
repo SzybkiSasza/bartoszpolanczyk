@@ -8,7 +8,7 @@
   "repository": "git@github.com:SzybkiSasza/bartoszpolanczyk.git",
   "scripts": {
     "build": "rm -rf ./dist && yarn build-server && yarn build-client",
-    "build-client": "webpack --config webpack.conf.js",
+    "build-client": "webpack --mode production --config webpack.conf.js",
     "build-server": "tsc -p tsconfig-server.json",
     "lint": "tslint -p tsconfig-server.json -c tslint.json && eslint src",
     "start": "node ./dist/server/server.js"

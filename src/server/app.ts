@@ -32,8 +32,7 @@ export class App {
 
     console.log(pathJoin(__dirname, '../website'));
 
-    app.use('/', express.static(
-      pathJoin(__dirname, '../dist/website'), { index: 'index.html', maxAge: 31557600000 }));
+    app.use(express.static(pathJoin(__dirname, '../website')));
 
     await new Promise((resolve) => {
       app.listen(this.port, resolve);
