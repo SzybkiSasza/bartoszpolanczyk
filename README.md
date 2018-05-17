@@ -1,2 +1,3 @@
-# bartoszpolanczyk.com
-Code for my Website
+# bartoszpolanczyk
+
+Code for my website
