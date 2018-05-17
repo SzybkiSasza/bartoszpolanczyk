@@ -1,10 +1,15 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "../",
+    "paths": {
+      "server*": ["src/server*"]
+    },
     "lib": [
       "ES2017"
     ],
     "target": "ES2017",
-    "module": "commonjs",
+    "module": "ES6",
     "outDir": "dist/server",
     "sourceMap": true
   },

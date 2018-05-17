@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "website*": ["src/website*"]
+    },
+    "lib": [
+      "ES2017"
+    ],
+    "target": "ES5",
+    "module": "commonjs",
+    "outDir": "dist/website",
+    "sourceMap": true
+  },
+  "extends": "./tsconfig-server.json",
+  "include": [
+    "src/website/**/*.ts",
+    "src/website/**/*.tsx"
+  ]
+}
