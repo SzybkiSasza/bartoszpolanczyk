@@ -2,11 +2,18 @@
   "name": "bartoszpolanczyk",
   "version": "0.0.1",
   "description": "My own website",
+  "license": "MIT",
+  "author": "Bartek Polanczyk <bartosz.polanczyk@gmail.com>",
   "main": "index.js",
   "repository": "git@github.com:SzybkiSasza/bartoszpolanczyk.git",
-  "author": "Bartek Polanczyk <bartosz.polanczyk@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "http-server": "^0.11.1"
+  },
+  "engines": {
+    "node": "8.10.0",
+    "yarn": "1.6.0"
+  },
+  "scripts": {
+    "start": "http-server ./sr -a localhost -p $PORT -c-1"
   }
 }
