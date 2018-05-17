@@ -11,6 +11,7 @@
     "build-client": "webpack --mode production --config webpack.conf.js",
     "build-server": "tsc -p tsconfig-server.json",
     "lint": "tslint -p tsconfig-server.json -c tslint.json && eslint src",
+    "postinstall": "yarn build",
     "start": "node ./dist/server/server.js"
   },
   "dependencies": {
