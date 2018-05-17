@@ -1,0 +1,9 @@
+{
+  "name": "bartoszpolanczyk",
+  "version": "0.0.1",
+  "description": "My own website",
+  "main": "index.js",
+  "repository": "git@github.com:SzybkiSasza/bartoszpolanczyk.git",
+  "author": "Bartek Polanczyk <bartosz.polanczyk@gmail.com>",
+  "license": "MIT"
+}
