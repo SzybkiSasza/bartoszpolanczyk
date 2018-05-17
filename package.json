@@ -10,8 +10,8 @@
     "build": "rm -rf ./dist && yarn build-server && yarn build-client",
     "build-client": "webpack --mode production --config webpack.conf.js",
     "build-server": "tsc -p tsconfig-server.json",
+    "heroku-postbuild": "yarn build",
     "lint": "tslint -p tsconfig-server.json -c tslint.json && eslint src",
-    "postinstall": "yarn build",
     "start": "node ./dist/server/server.js"
   },
   "dependencies": {
