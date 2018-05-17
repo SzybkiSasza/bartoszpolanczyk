@@ -1,4 +1,4 @@
-import { App } from './app';
+import { App } from 'server/app';
 
 const port = process.env.PORT;
 const mongoURI = process.env.MONGODB_URI;

@@ -30,8 +30,6 @@ export class App {
       xssProtection: true,
     }));
 
-    console.log(pathJoin(__dirname, '../website'));
-
     app.use(express.static(pathJoin(__dirname, '../website')));
 
     await new Promise((resolve) => {
