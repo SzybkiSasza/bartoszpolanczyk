@@ -1,4 +1,4 @@
 {
   "root": true,
-  "extends": "eslint-plugin-airbnb-base"
+  "extends": "airbnb"
 }
