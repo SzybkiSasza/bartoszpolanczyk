@@ -18,7 +18,7 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json'],
         plugins: [
-            new TsconfigPathsPlugin({ configFile: pathResolve(mainDir, 'build-config/tsconfig-client.json') })
+            new TsconfigPathsPlugin({ configFile: pathResolve(mainDir, 'config/tsconfig-client.json') })
         ]
     },
 
@@ -36,7 +36,7 @@ module.exports = {
                 test: /\.tsx?$/,
                 loader: 'awesome-typescript-loader',
                 options: {
-                    configFileName: pathResolve(mainDir, 'build-config/tsconfig-client.json')
+                    configFileName: pathResolve(mainDir, 'config/tsconfig-client.json')
                 }
             },
             {
