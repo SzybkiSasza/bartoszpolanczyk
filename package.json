@@ -10,10 +10,14 @@
   "scripts": {
     "build": "rm -rf ./dist && yarn build-server && yarn build-client",
     "build-client": "webpack --config config/webpack-client.conf.js",
-    "build-server": "webpack --config config/webpack-server.conf.js --optimize-minimize=false",
+    "build-server": "webpack --config config/webpack-server.conf.js",
     "build:dev": "yarn build --mode=development",
     "heroku-postbuild": "yarn build",
-    "lint": "tslint -p config/tsconfig-server.json -c tslint.json  && tslint -p config/tsconfig-client.json -c tslint.json && eslint src && stylelint src/**/*.scss",
+    "lint": "yarn lint:server && yarn lint:client && yarn lint:js && yarn lint:scss",
+    "lint:client": "tslint -p config/tsconfig-client.json -c tslint.json",
+    "lint:server": "tslint -p config/tsconfig-server.json -c tslint.json  ",
+    "lint:js": "eslint src",
+    "lint:scss": "stylelint src/**/*.scss",
     "start": "node ./dist/server/server.js"
   },
   "dependencies": {
