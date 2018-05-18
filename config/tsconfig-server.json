@@ -16,7 +16,7 @@
     "sourceMap": true
   },
   "include": [
-    "src/server/**/*.ts"
+    "../src/server/**/*.ts"
   ],
   "exclude": [
     "dist",

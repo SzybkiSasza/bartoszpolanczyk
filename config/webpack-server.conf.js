@@ -30,9 +30,11 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader',
+        loader: require.resolve('ts-loader'),
         options: {
-          configFileName: pathResolve(mainDir, 'config/tsconfig-server.json'),
+          // disable type checker - we will use it in fork plugin
+          transpileOnly: true,
+          configFile: pathResolve(mainDir, 'config/tsconfig-server.json'),
         },
       },
       {
