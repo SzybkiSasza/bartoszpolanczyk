@@ -39,11 +39,13 @@ function build(previousFileSizes) {
       if (err) {
         return reject(err);
       }
+
       const messages = formatWebpackMessages(stats.toJson({}, true));
       if (messages.errors.length) {
         if (messages.errors.length > 1) {
           messages.errors.length = 1;
         }
+
         return reject(new Error(messages.errors.join('\n\n')));
       }
       if (
@@ -113,6 +115,7 @@ measureFileSizesBeforeBuild(paths.appBuild)
     },
     (err) => {
       console.log(chalk.red('Failed to compile.\n'));
+      console.log(err);
       printBuildError(err);
       process.exit(1);
     },

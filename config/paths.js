@@ -1,3 +1,5 @@
+
+
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
@@ -20,7 +22,7 @@ function ensureSlash(path, needsSlash) { // eslint-disable-line
 }
 
 const getPublicUrl = appPackageJson =>
-  envPublicUrl || require(appPackageJson).homepage; // eslint-disable-line
+  envPublicUrl || require(appPackageJson).homepage;
 
 function getServedPath(appPackageJson) {
   const publicUrl = getPublicUrl(appPackageJson);
@@ -41,6 +43,7 @@ module.exports = {
   yarnLockFile: resolveApp('yarn.lock'),
   appNodeModules: resolveApp('node_modules'),
   appTsConfig: resolveApp('config/tsconfig-client.json'),
+  appTsProdConfig: resolveApp('config/tsconfig-client.json'),
   appTsLint: resolveApp('tslint.json'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
