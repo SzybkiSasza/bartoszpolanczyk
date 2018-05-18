@@ -15,7 +15,7 @@
   },
   "extends": "./tsconfig-server.json",
   "include": [
-    "src/website/**/*.ts",
-    "src/website/**/*.tsx"
+    "../src/website/**/*.ts",
+    "../src/website/**/*.tsx"
   ]
 }
