@@ -4,9 +4,11 @@
       "website*": ["src/website*"]
     },
     "lib": [
-      "ES2017"
+      "ES2017",
+      "DOM"
     ],
-    "target": "ES5",
+    "jsx": "react",
+    "target": "ES6",
     "module": "commonjs",
     "outDir": "dist/website",
     "sourceMap": true
