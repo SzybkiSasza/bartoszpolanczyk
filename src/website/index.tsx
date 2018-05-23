@@ -3,8 +3,11 @@ import * as ReactDOM from 'react-dom';
 
 import registerServiceWorker from 'website/registerServiceWorker';
 
+import './fonts/fonts.css';
+import { Main } from './layouts/Main';
+
 ReactDOM.render(
-  <div>Hello World 123!</div>,
+  <Main/>,
   document.getElementById('root') as HTMLElement,
 );
 
