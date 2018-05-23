@@ -12,11 +12,11 @@
     "build-client": "node scripts/build.js",
     "build-server": "webpack --config config/webpack-server.conf.js",
     "heroku-postbuild": "yarn build",
-    "lint": "yarn lint:server && yarn lint:client && yarn lint:js && yarn lint:scss",
+    "lint": "yarn lint:server && yarn lint:client && yarn lint:js && yarn lint:css",
     "lint:client": "tslint -p config/tsconfig-client.json -c tslint.json",
     "lint:server": "tslint -p config/tsconfig-server.json -c tslint.json  ",
     "lint:js": "eslint config src scripts --fix",
-    "lint:scss": "stylelint src/**/*.scss",
+    "lint:css": "stylelint src/**/*.css",
     "start": "node dist/server/server.js",
     "start:client": "node scripts/start.js"
   },
