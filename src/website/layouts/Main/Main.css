@@ -1,9 +1,26 @@
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .main {
   position: relative;
   width: 100%;
   height: 100%;
+}
+
+.main__sliding-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
+  cursor: hand;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 .main__part {
@@ -12,9 +29,9 @@
 }
 
 .main__part--left {
-  box-shadow: -0.5vw 0 0 0 #000 inset;
+  box-shadow: -0.5vw 0 0 0 #111 inset;
 }
 
 .main__part--right {
-  box-shadow: 0.5vw 0 0 0 #000 inset;
+  box-shadow: 0.5vw 0 0 0 #111 inset;
 }
