@@ -1,0 +1,23 @@
+/* philosopher-regular - latin */
+@font-face {
+  font-family: 'Philosopher';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local('Philosopher Regular'),
+    local('Philosopher-Regular'),
+    url('./philosopher-v9-latin-regular.woff2') format('woff2'),
+    url('./philosopher-v9-latin-regular.woff') format('woff');
+}
+
+/* philosopher-700 - latin */
+@font-face {
+  font-family: 'Philosopher';
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local('Philosopher Bold'),
+    local('Philosopher-Bold'),
+    url('./philosopher-v9-latin-700.woff2') format('woff2'),
+    url('./philosopher-v9-latin-700.woff') format('woff');
+}
