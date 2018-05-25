@@ -1,4 +1,3 @@
-import * as Parallax from 'parallax-js';
 import * as React from 'react';
 
 import { ElementStyle, MainProps, MainState } from './interfaces';
@@ -22,7 +21,6 @@ const TITLE_MIN_SCALE = 5;
 export class Main extends React.Component<MainProps, MainState> {
   constructor(props: any) {
     super(props);
-    this.parallaxRef = React.createRef();
 
     this.state = {
       headerVisible: true,
@@ -32,20 +30,9 @@ export class Main extends React.Component<MainProps, MainState> {
   componentDidMount() {
     this.blinkingLoop();
     this.shakingLoop();
-    this.parallax = new Parallax(this.parallaxRef);
-
-    console.log(this.parallax);
-  }
-
-  componentWillUnmount() {
-    if (this.parallax) {
-      this.parallax.disable();
-    }
   }
 
   // Shake/steady time
-  private parallax;
-  private parallaxRef: React.Ref<Parallax>;
   private shakingTime = Infinity;
 
   private get className() {
@@ -165,10 +152,10 @@ export class Main extends React.Component<MainProps, MainState> {
 
   render() {
     return (
-      <div className="main" ref={this.parallaxRef}>
+      <div className="main">
         <div className="main__tv-overlay"/>
         <div className="main__scanlines"/>
-        <div className={this.className} style={this.style}>
+        <div className={this.className} style={this.style} data-depth="0.5">
           <h1>Bart<span>o</span>sz P<span>o</span>lanczyk</h1>
           <h2>Insert c<span>o</span>in</h2>
         </div>
