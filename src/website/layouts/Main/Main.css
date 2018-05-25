@@ -99,9 +99,17 @@
 }
 
 .main__header--shadow-2 {
-
+  text-shadow: 7px -1px 0 #ff0300, 2px -3px 0 #0041ff, 1px -5px 0 #00ff29;
 }
 
 .main__header--shadow-3 {
+  text-shadow: -2px 8px 0 #ff0300, 1px 1px 0 #0041ff, 4px 2px 0 #00ff29;
+}
 
+.main__header--shadow-4 {
+  text-shadow: 4px 6px 0 #ff0300, -12px 8px 0 #0041ff, -8px -3px 0 #00ff29;
+}
+
+.main-header--shadow-5 {
+  text-shadow: 6px 4px 0 #ff0300, -5px 7px 0 #0041ff, 6px 0 0 #00ff29;
 }
