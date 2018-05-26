@@ -18,7 +18,8 @@
     "lint:js": "eslint config src scripts --fix",
     "lint:css": "stylelint src/**/*.css",
     "start": "node dist/server/server.js",
-    "start:client": "node scripts/start.js"
+    "start:client": "node scripts/start.js",
+    "test": "jest"
   },
   "dependencies": {
     "autoprefixer": "7.1.6",
