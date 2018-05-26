@@ -13,9 +13,10 @@ export const getHeaderStyleObject = (state: MainState): React.CSSProperties => {
   const headerStyle = state.headerStyle;
   return {
     transform: `skew(${headerStyle.offset.skew * Math.PI}rad, ` +
-    `${headerStyle.offset.skew * Math.PI}rad)` +
+    `${headerStyle.offset.skew * Math.PI}rad) ` +
     `translate(${headerStyle.offset.top}px, ${headerStyle.offset.left}px) ` +
-    `scaleY(${headerStyle.offset.height})`,
+    `scaleX(${headerStyle.offset.width}) ` +
+    `scaleY(${headerStyle.offset.height}) `,
     textShadow: `${headerStyle.red.left}px ${headerStyle.red.top}px 0 #ff0300, ` +
     `${headerStyle.blue.left}px ${headerStyle.blue.top}px 0 #0041ff, ` +
     `${headerStyle.green.left}px ${headerStyle.green.top}px 0 #00ff29`,
@@ -41,6 +42,7 @@ export const getNextHeaderStyle = (): ElementStyle => {
       left: this.getRandomNumber(0, TITLE_MAX_OVERSHOOT, true),
       top: this.getRandomNumber(0, TITLE_MAX_OVERSHOOT, true),
       height: this.getRandomNumber(TITLE_MIN_SCALE, 10) * 0.1,
+      width: this.getRandomNumber(TITLE_MIN_SCALE, 10) * 0.1,
       skew: this.getRandomNumber(1, 2),
     },
     red: {

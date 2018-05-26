@@ -2,6 +2,7 @@ interface Transform {
   left: number;
   top: number;
   height?: number;
+  width?: number;
   skew?: number;
 }
 
