@@ -30,7 +30,7 @@
   height: 100%;
   pointer-events: none;
   box-shadow: 0 0 100px #7a98ff inset;
-  filter: blur(30px);
+  filter: blur(50px);
 }
 
 .main__header {
@@ -42,21 +42,24 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  text-shadow: 0 0 30px;
 }
 
 .main__header h1 {
-  padding: 10px 0 6px;
+  padding: 20px 0 14px 14px;
   border-top: 3px solid #fff;
   border-bottom: 3px solid #fff;
   font-size: 50px;
-  line-height: 40px;
+  line-height: 60px;
   text-align: center;
+  cursor: pointer;
 }
 
 .main__header h2 {
   padding: 10px 0 6px;
   font-size: 30px;
   line-height: 30px;
+  cursor: pointer;
 }
 
 .main__header span {
@@ -72,7 +75,7 @@
   .main__header h1 {
     letter-spacing: 5px;
     font-size: 25px;
-    transform: scaleX
+    line-height: 30px;
   }
 
   .main__header h2 {

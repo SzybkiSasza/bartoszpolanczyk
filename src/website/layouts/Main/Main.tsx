@@ -1,7 +1,12 @@
 import * as React from 'react';
 
 import { MainProps, MainState } from './interfaces';
-import { getHeaderStyleObject, getRandomNumber, getNextHeaderStyle } from './Helpers';
+import {
+  getHeaderStyleObject,
+  getRandomNumber,
+  getNextHeaderStyle,
+  getScanlinesStyle,
+} from './Helpers';
 
 import './Main.css';
 
@@ -16,12 +21,10 @@ const STEADY_TIME_MAX = 20000;
 const SHAKING_INTERVAL_MIN = 5;
 const SHAKING_INTERVAL_MAX = 30;
 
-const SCANLINE_MAX_BLINK_INTERVAL = 1000;
-const SCANLINE_BLINK_OFF_INTERVAL = 100;
-
-const SCANLINE_OPACITY_MIN = 3;
-const SCANLINE_OPACITY_MAX = 8;
-const SCANLINE_REFRESH_RATE = 30;
+const SCANLINE_OPACITY_MIN = 4;
+const SCANLINE_OPACITY_MAX = 6;
+const SCANLINE_REFRESH_RATE = 40;
+const SCANLINE_RANDOMBLINK_PROBABILITY = 0.05;
 
 export class Main extends React.Component<MainProps, MainState> {
   constructor(props: any) {
@@ -34,8 +37,8 @@ export class Main extends React.Component<MainProps, MainState> {
   }
 
   componentDidMount() {
-    // this.blinkingLoop();
-    // this.shakingLoop();
+    this.blinkingLoop();
+    this.shakingLoop();
     this.scanlineBlinkingLoop();
   }
 
@@ -64,14 +67,32 @@ export class Main extends React.Component<MainProps, MainState> {
     return getHeaderStyleObject(this.state);
   }
 
+  private get scanlinesStyle() {
+    return getScanlinesStyle(this.state);
+  }
+
   /**
    * Simulates scanline blinking (regular + random brigtness spikes)
    */
   private scanlineBlinkingLoop() {
     setTimeout(
-      () => {}
-        // this.setPartialState({})
-      ,
+      () => {
+        this.setPartialState({ scanlinesOpacity: SCANLINE_OPACITY_MAX });
+        setTimeout(
+          () => {
+            const isRandomBlink = Math.random() <= SCANLINE_RANDOMBLINK_PROBABILITY;
+
+            if (isRandomBlink) {
+              const newOpacity = getRandomNumber(0, SCANLINE_OPACITY_MIN);
+              this.setPartialState({ scanlinesOpacity: newOpacity });
+            } else {
+              this.setPartialState({ scanlinesOpacity: SCANLINE_OPACITY_MIN });
+            }
+            this.scanlineBlinkingLoop();
+          },
+          0,
+        );
+      },
       SCANLINE_REFRESH_RATE,
     );
   }
@@ -125,7 +146,7 @@ export class Main extends React.Component<MainProps, MainState> {
     return (
       <div className="main">
         <div className="main__tv-overlay"/>
-        <div className="main__scanlines"/>
+        <div style={this.scanlinesStyle} className="main__scanlines"/>
         <div className="main__header" style={this.headerStyle} data-depth="0.5">
           <h1>Bartosz Polanczyk</h1>
           <h2 style={{ opacity: this.state.headerVisible ? 1 : 0 }}>
