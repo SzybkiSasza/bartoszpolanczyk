@@ -15,7 +15,6 @@ export const getHeaderStyleObject = (state: MainState): React.CSSProperties => {
     transform: `skew(${headerStyle.offset.skew * Math.PI}rad, ` +
     `${headerStyle.offset.skew * Math.PI}rad) ` +
     `translate(${headerStyle.offset.top}px, ${headerStyle.offset.left}px) ` +
-    `scaleX(${headerStyle.offset.width}) ` +
     `scaleY(${headerStyle.offset.height}) `,
     textShadow: `${headerStyle.red.left}px ${headerStyle.red.top}px 0 #ff0300, ` +
     `${headerStyle.blue.left}px ${headerStyle.blue.top}px 0 #0041ff, ` +
