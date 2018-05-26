@@ -22,6 +22,12 @@ export const getHeaderStyleObject = (state: MainState): React.CSSProperties => {
   } as React.CSSProperties;
 };
 
+export const getScanlinesStyle = (state: MainState) => {
+  return {
+    opacity: 0.1 * state.scanlinesOpacity,
+  };
+};
+
 export const getRandomNumber = (min: number, max: number, allowNegative = false): number => {
   const randNumber = Math.floor((max - min) * Math.random()) + min;
   const sign = Math.sign(Math.cos(Math.random() * Math.PI));
@@ -35,7 +41,7 @@ export const getNextHeaderStyle = (): ElementStyle => {
       left: this.getRandomNumber(0, TITLE_MAX_OVERSHOOT, true),
       top: this.getRandomNumber(0, TITLE_MAX_OVERSHOOT, true),
       height: this.getRandomNumber(TITLE_MIN_SCALE, 10) * 0.1,
-      skew: this.getRandomNumber(0, 2),
+      skew: this.getRandomNumber(1, 2),
     },
     red: {
       left: this.getRandomNumber(0, PIXEL_MAX_OVERSHOOT, true),
