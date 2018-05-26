@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import registerServiceWorker from 'website/registerServiceWorker';
 
 import './fonts/fonts.css';
-import { Main } from './layouts/Main';
+import { Main } from './layouts/Main/Main';
 
 ReactDOM.render(
   <Main/>,

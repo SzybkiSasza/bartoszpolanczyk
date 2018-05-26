@@ -16,5 +16,6 @@ export interface MainProps {}
 
 export interface MainState {
   headerVisible?: boolean;
-  elementStyle?: ElementStyle;
+  scanlinesOpacity: number;
+  headerStyle?: ElementStyle;
 }
