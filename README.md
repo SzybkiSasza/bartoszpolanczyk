@@ -6,7 +6,7 @@ My personal website code!
 
 Around 2012 I bought my own domain to create my own website - for showing both my passions and programming skills. Immediately after, 
 
-I released the first version - lacking both skills and initiavite - that consisted mosly of dancing banana that was perfectly responsive:
+I released the first version - lacking both skills and initiavite - that consisted mostly of dancing banana that was perfectly responsive:
 
 ![Banana](https://media.giphy.com/media/IB9foBA4PVkKA/giphy.gif)
 
