@@ -1,8 +1,9 @@
 # Files
-.idea
 yarn-error.log
 
 # Folders
+.idea
+.next
 dist
 node_modules
 test
