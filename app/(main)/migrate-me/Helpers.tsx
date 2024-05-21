@@ -38,23 +38,23 @@ export const getRandomNumber = (min: number, max: number, allowNegative = false)
 export const getNextHeaderStyle = (): ElementStyle => {
   return {
     offset: {
-      left: this.getRandomNumber(0, TITLE_MAX_OVERSHOOT, true),
-      top: this.getRandomNumber(0, TITLE_MAX_OVERSHOOT, true),
-      height: this.getRandomNumber(TITLE_MIN_SCALE, 10) * 0.1,
-      width: this.getRandomNumber(TITLE_MIN_SCALE, 10) * 0.1,
-      skew: this.getRandomNumber(1, 2),
+      left: getRandomNumber(0, TITLE_MAX_OVERSHOOT, true),
+      top: getRandomNumber(0, TITLE_MAX_OVERSHOOT, true),
+      height: getRandomNumber(TITLE_MIN_SCALE, 10) * 0.1,
+      width: getRandomNumber(TITLE_MIN_SCALE, 10) * 0.1,
+      skew: getRandomNumber(1, 2),
     },
     red: {
-      left: this.getRandomNumber(0, PIXEL_MAX_OVERSHOOT, true),
-      top: this.getRandomNumber(0, PIXEL_MAX_OVERSHOOT),
+      left: getRandomNumber(0, PIXEL_MAX_OVERSHOOT, true),
+      top: getRandomNumber(0, PIXEL_MAX_OVERSHOOT),
     },
     green: {
-      left: this.getRandomNumber(0, PIXEL_MAX_OVERSHOOT, true),
-      top: this.getRandomNumber(0, PIXEL_MAX_OVERSHOOT, true),
+      left: getRandomNumber(0, PIXEL_MAX_OVERSHOOT, true),
+      top: getRandomNumber(0, PIXEL_MAX_OVERSHOOT, true),
     },
     blue: {
-      left: this.getRandomNumber(0, PIXEL_MAX_OVERSHOOT, true),
-      top: this.getRandomNumber(0, PIXEL_MAX_OVERSHOOT, true),
+      left: getRandomNumber(0, PIXEL_MAX_OVERSHOOT, true),
+      top: getRandomNumber(0, PIXEL_MAX_OVERSHOOT, true),
     },
   };
 };
