@@ -1,16 +1,29 @@
 import * as React from 'react';
-import { ElementStyle, MainState } from './interfaces';
+
+export interface Transform {
+  left: number;
+  top: number;
+  height?: number;
+  width?: number;
+  skew?: number;
+}
+
+export interface ElementStyle {
+  offset?: Transform;
+  red?: Transform;
+  green?: Transform;
+  blue?: Transform;
+}
 
 const PIXEL_MAX_OVERSHOOT = 10;
 const TITLE_MAX_OVERSHOOT = 30;
 const TITLE_MIN_SCALE = 5;
 
-export const getHeaderStyleObject = (state: MainState): React.CSSProperties => {
-  if (!state.headerStyle) {
+export const getHeaderStyleObject = (headerStyle?: ElementStyle): React.CSSProperties => {
+  if (!headerStyle) {
     return {} as React.CSSProperties;
   }
 
-  const headerStyle = state.headerStyle;
   return {
     transform: `skew(${headerStyle.offset.skew * Math.PI}rad, ` +
     `${headerStyle.offset.skew * Math.PI}rad) ` +
@@ -22,9 +35,9 @@ export const getHeaderStyleObject = (state: MainState): React.CSSProperties => {
   } as React.CSSProperties;
 };
 
-export const getScanlinesStyle = (state: MainState) => {
+export const getScanLinesStyle = (scanLinesOpacity: number) => {
   return {
-    opacity: 0.1 * state.scanlinesOpacity,
+    opacity: 0.1 * scanLinesOpacity,
   };
 };
 

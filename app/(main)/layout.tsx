@@ -1,8 +1,12 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
-import { getHeaderStyleObject, getNextHeaderStyle, getRandomNumber, getScanlinesStyle } from './migrate-me/Helpers';
-import { ElementStyle, MainState } from './migrate-me/interfaces';
+import { Press_Start_2P } from 'next/font/google';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+
+import type { ElementStyle } from './helpers';
+import { getHeaderStyleObject, getNextHeaderStyle, getRandomNumber, getScanLinesStyle } from './helpers';
+
+import './main-layout.css';
 
 const BLINK_ON_INTERVAL = 3000;
 const BLINK_OFF_INTERVAL = 1000;
@@ -20,88 +24,89 @@ const SCANLINE_OPACITY_MAX = 6;
 const SCANLINE_REFRESH_RATE = 40;
 const SCANLINE_RANDOMBLINK_PROBABILITY = 0.05;
 
-let shakingTime = -Infinity;
+const pressStart2P = Press_Start_2P({ subsets: ['latin'], weight: '400' })
 
-export default function MainLayout({ children }: {
-  children: React.ReactNode
-}) {
+export default function MainLayout() {
   const [headerVisible, setHeaderVisible] = useState(true);
-  const [scanlinesOpacity, setScanlinesOpacity] = useState(SCANLINE_OPACITY_MAX);
-  const [headerStyle, setHeaderStyle] = useState<ElementStyle>({});
+  const [scanLinesOpacity, setScanLinesOpacity] = useState(SCANLINE_OPACITY_MAX);
+  const [headerStyle, setHeaderStyle] = useState<ElementStyle>(undefined);
+  const [shakingTime, setShakingTime] = useState(0);
 
+  // Timeout IDs
+  const blinkingLoopId = useRef<NodeJS.Timeout>();
+  const scanLineBlinkingLoopId = useRef<NodeJS.Timeout>();
+  const shakingLoopId = useRef<NodeJS.Timeout>();
+
+  // Callbacks for triggering the effects
+  const blinkingLoop = useCallback(() => {
+    blinkingLoopId.current = setTimeout(() => {
+      setHeaderVisible(!headerVisible);
+    }, headerVisible ? BLINK_ON_INTERVAL : BLINK_OFF_INTERVAL);
+  }, [headerVisible]);
   useEffect(() => {
-      // Blinking loop
-      let blinkingLoopId: NodeJS.Timeout;
-      const blinkingLoop = () => {
-        blinkingLoopId = setTimeout(
-          () => {
-            setHeaderVisible(
-              (headerVisible) => (!headerVisible),
-            );
-            blinkingLoop();
-          },
-          headerVisible ? BLINK_ON_INTERVAL : BLINK_OFF_INTERVAL,
-        );
-      }
-      blinkingLoop();
-
-      // Shaking loop
-      let shakingLoopId: NodeJS.Timeout;
-      const shakingLoop = () => {
-        if (shakingTime >= SHAKING_TIME_MAX) {
-          setHeaderStyle({  });
-          shakingTime = 0;
-
-          const nextShakingTime = getRandomNumber(STEADY_TIME_MIN, STEADY_TIME_MAX);
-          setTimeout(
-            () => {
-              shakingLoop();
-            },
-            nextShakingTime,
-          );
-        } else {
-          const nextShake = getRandomNumber(SHAKING_INTERVAL_MIN, SHAKING_INTERVAL_MAX);
-
-          const shouldDisplayAligned = Math.random() <= 0.3;
-          if (shouldDisplayAligned) {
-            setHeaderStyle({});
-          } else {
-            const nextElementStyle = getNextHeaderStyle();
-            setHeaderStyle(nextElementStyle);
-          }
-
-          setTimeout(
-            () => {
-              shakingTime += nextShake;
-              shakingLoop();
-            },
-            nextShake,
-          );
-        }
-      };
-      shakingLoop();
-
-      return () => {
-        clearTimeout(blinkingLoopId);
-        clearTimeout(shakingLoopId);
-      };
+    blinkingLoop();
+    return () => {
+      clearTimeout(blinkingLoopId.current);
     }
-    ,
-    []
-  );
+  }, [blinkingLoop]);
 
-  return <div className="main">
+  const scanLineBlinkingLoop = useCallback(() => {
+    scanLineBlinkingLoopId.current = setTimeout(() => {
+      if (scanLinesOpacity !== SCANLINE_OPACITY_MAX) {
+        setScanLinesOpacity(SCANLINE_OPACITY_MAX);
+      } else {
+        const isRandomBlink = Math.random() <= SCANLINE_RANDOMBLINK_PROBABILITY;
+        if (isRandomBlink) {
+          const newOpacity = getRandomNumber(0, SCANLINE_OPACITY_MIN);
+          setScanLinesOpacity(newOpacity);
+        } else {
+          setScanLinesOpacity(SCANLINE_OPACITY_MIN);
+        }
+      }
+    }, SCANLINE_REFRESH_RATE);
+  }, [scanLinesOpacity]);
+  useEffect(() => {
+    scanLineBlinkingLoop();
+    return () => {
+      clearTimeout(scanLineBlinkingLoopId.current);
+    }
+  }, [scanLineBlinkingLoop]);
+
+  const shakingLoop = useCallback(() => {
+    if (shakingTime >= SHAKING_TIME_MAX) {
+      setHeaderStyle(undefined);
+
+      const nextShakingTime = getRandomNumber(STEADY_TIME_MIN, STEADY_TIME_MAX);
+      setTimeout(() => {
+        setShakingTime(0);
+      }, nextShakingTime);
+    } else {
+      const nextShake = getRandomNumber(SHAKING_INTERVAL_MIN, SHAKING_INTERVAL_MAX);
+
+      const shouldDisplayAligned = Math.random() <= 0.3;
+      if (shouldDisplayAligned) {
+        setHeaderStyle(undefined);
+      } else {
+        const nextElementStyle = getNextHeaderStyle();
+        setHeaderStyle(nextElementStyle);
+      }
+
+      shakingLoopId.current = setTimeout(() => {
+        setShakingTime(shakingTime + nextShake);
+      }, nextShake);
+    }
+  }, [shakingTime]);
+  useEffect(() => {
+    shakingLoop();
+    return () => {
+      clearTimeout(shakingLoopId.current);
+    }
+  }, [shakingLoop]);
+
+  return <div className={ `main ${ pressStart2P.className }` }>
     <div className="main__tv-overlay"/>
-    <div style={ getScanlinesStyle({
-      headerStyle,
-      headerVisible,
-      scanlinesOpacity
-    }) } className="main__scanlines"/>
-    <div className="main__header" style={ getHeaderStyleObject({
-      headerStyle,
-      headerVisible,
-      scanlinesOpacity,
-    }) } data-depth="0.5">
+    <div style={ getScanLinesStyle(scanLinesOpacity) } className="main__scanlines"/>
+    <div className="main__header" style={ getHeaderStyleObject(headerStyle) } data-depth="0.5">
       <h1>Bartosz Polanczyk</h1>
       <h2 style={ { opacity: headerVisible ? 1 : 0 } }>
         Insert c<span>o</span>in
