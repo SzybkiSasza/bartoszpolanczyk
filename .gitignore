@@ -7,3 +7,6 @@ yarn-error.log
 dist
 node_modules
 test
+
+# Output
+out
