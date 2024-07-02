@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import styled from "styled-components";
-import { getRandomNumber } from "../../helpers";
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
+import { getRandomNumber } from '../../../utils/random';
 
 const SCANLINE_OPACITY_MIN = 0.4;
 const SCANLINE_OPACITY_MAX = 0.6;

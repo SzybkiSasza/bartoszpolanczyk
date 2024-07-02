@@ -6,6 +6,6 @@ const nextConfig = {
     styledComponents: true,
   },
   output: 'export',
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -1,4 +1,5 @@
-import * as React from "react";
+import * as React from 'react';
+import { getRandomNumber } from '../../../utils/random';
 
 export interface Transform {
   left: number;
@@ -8,7 +9,7 @@ export interface Transform {
   skew?: number;
 }
 
-export interface ElementStyle {
+export interface ElementState {
   offset?: Transform;
   red?: Transform;
   green?: Transform;
@@ -19,8 +20,8 @@ const PIXEL_MAX_OVERSHOOT = 10;
 const TITLE_MAX_OVERSHOOT = 30;
 const TITLE_MIN_SCALE = 5;
 
-export const getHeaderStyleObject = (
-  headerStyle?: ElementStyle,
+export const getBannerAnimStyle = (
+  headerStyle?: ElementState,
 ): React.CSSProperties => {
   if (!headerStyle) {
     return {} as React.CSSProperties;
@@ -39,18 +40,7 @@ export const getHeaderStyleObject = (
   } as React.CSSProperties;
 };
 
-export const getRandomNumber = (
-  min: number,
-  max: number,
-  allowNegative = false,
-): number => {
-  const randNumber = Math.floor((max - min) * Math.random()) + min;
-  const sign = Math.sign(Math.cos(Math.random() * Math.PI));
-
-  return allowNegative ? sign * randNumber : randNumber;
-};
-
-export const getNextHeaderStyle = (): ElementStyle => {
+export const getRandomHeaderState = (): ElementState => {
   return {
     offset: {
       left: getRandomNumber(0, TITLE_MAX_OVERSHOOT, true),
