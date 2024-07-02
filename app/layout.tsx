@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import React from 'react';
 
+import StyledComponentsRegistry from '../lib/registry';
 import './base.css';
 
 export const metadata: Metadata = {
@@ -8,22 +9,33 @@ export const metadata: Metadata = {
   description: 'Bartosz Polanczyk - home page',
   icons: {
     icon: '/favicon.png',
-    shortcut: '/favicon.png'
+    shortcut: '/favicon.png',
   },
-  keywords: ['react', 'next.js', 'TypeScript', 'JavaScript', 'home', 'homepage', 'web', 'cv', 'portfolio'],
+  keywords: [
+    'react',
+    'next.js',
+    'TypeScript',
+    'JavaScript',
+    'home',
+    'homepage',
+    'web',
+    'cv',
+    'portfolio',
+  ],
   manifest: '/manifest.json',
   title: 'Bartosz Polanczyk',
 };
 
-
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-    <body>{ children }</body>
+      <body>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      </body>
     </html>
-  )
+  );
 }
