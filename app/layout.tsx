@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import React from 'react';
 
 import './base.css';
+import StyledComponentsRegistry from '../lib/registry';
 
 export const metadata: Metadata = {
   creator: 'Bartosz Polanczyk',
@@ -23,7 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-    <body>{ children }</body>
+      <body>
+        <StyledComponentsRegistry>{ children }</StyledComponentsRegistry>
+      </body>
     </html>
   )
 }
