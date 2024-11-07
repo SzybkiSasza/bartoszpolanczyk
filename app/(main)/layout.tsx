@@ -1,9 +1,7 @@
 'use client';
 
+import React from 'react';
 import styled from 'styled-components';
-
-import { Banner } from './components/Banner/Banner';
-import { TvOverlay } from './components/TvOverlay/TvOverlay';
 
 const MainLayoutContainer = styled.div`
   position: relative;
@@ -15,11 +13,8 @@ const MainLayoutContainer = styled.div`
   justify-content: center;
 `;
 
-export default function MainLayout() {
-  return (
-    <MainLayoutContainer>
-      <TvOverlay />
-      <Banner />
-    </MainLayoutContainer>
-  );
-}
+const MainLayout = ({ children }: { children: React.ReactNode }) => {
+  return <MainLayoutContainer>{children}</MainLayoutContainer>;
+};
+
+export default MainLayout;
