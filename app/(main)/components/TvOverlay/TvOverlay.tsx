@@ -45,7 +45,8 @@ export const TvOverlay: React.FC = () => {
       if (scanLinesOpacity !== SCANLINE_OPACITY_MAX) {
         setScanLinesOpacity(SCANLINE_OPACITY_MAX);
       } else {
-        const isRandomBlink = Math.random() <= SCANLINE_RANDOM_BLINK_PROBABILITY;
+        const isRandomBlink =
+          Math.random() <= SCANLINE_RANDOM_BLINK_PROBABILITY;
         if (isRandomBlink) {
           const newOpacity = getRandomNumber(0, SCANLINE_OPACITY_MIN);
           setScanLinesOpacity(newOpacity);
