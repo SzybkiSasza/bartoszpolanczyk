@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation';
 import React from 'react';
 
 const WelcomePageRedirect: React.FC = () => {
-  redirect('/new-page');
+  redirect('/welcome');
 };
 
 export default WelcomePageRedirect;
