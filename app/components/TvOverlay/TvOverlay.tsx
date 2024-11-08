@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { MOBILE_WIDTH_BREAKPOINT } from '../../../constants';
-import { getRandomNumber } from '../../../utils/random';
+import { MOBILE_WIDTH_BREAKPOINT } from '../../constants';
+import { getRandomNumber } from '../../utils/random';
 
 const SCANLINE_OPACITY_MIN = 0.4;
 const SCANLINE_OPACITY_MAX = 0.6;

@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { MOBILE_WIDTH_BREAKPOINT } from '../../../constants';
-import { pressStart2P } from '../../../fonts';
-import { getRandomNumber } from '../../../utils/random';
+import { MOBILE_WIDTH_BREAKPOINT } from '../../constants';
+import { pressStart2P } from '../../fonts';
+import { getRandomNumber } from '../../utils/random';
 import {
   ElementState,
   getBannerAnimStyle,
@@ -30,6 +30,7 @@ const BannerWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   text-shadow: 0 0 30px;
+  height: 100%;
 `;
 
 const PrimaryHeader = styled.h1`

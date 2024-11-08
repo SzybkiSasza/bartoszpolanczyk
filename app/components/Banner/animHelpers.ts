@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getRandomNumber } from '../../../utils/random';
+import { getRandomNumber } from '../../utils/random';
 
 export interface Transform {
   left: number;

@@ -8,15 +8,12 @@ const MainLayoutContainer = styled.div`
   width: 100%;
   height: 100%;
   background-color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #cccccc;
   font-family: Arial, Helvetica, sans-serif;
   overflow: auto;
 `;
 
-const MainLayout: React.FC = ({ children }: { children: React.ReactNode }) => {
+const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <MainLayoutContainer>{children}</MainLayoutContainer>;
 };
 

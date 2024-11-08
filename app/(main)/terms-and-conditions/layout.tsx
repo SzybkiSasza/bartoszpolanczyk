@@ -2,17 +2,11 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
-const TermsAndConditionsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 24px 12px;
-  max-width: 800px;
-`;
+import { CenteredLayout } from '../../layouts/CenteredLayout/CenteredLayout';
 
 const TermsAndConditionsHeader = styled.h1`
-  margin: 32px 0;
+  text-align: center;
+  margin: 32px 0 12px;
 `;
 
 const TermsAndConditionsOutlet = styled.div`
@@ -21,16 +15,14 @@ const TermsAndConditionsOutlet = styled.div`
   align-items: baseline;
 `;
 
-const TermsAndConditionsLayout: React.FC = ({
+const TermsAndConditionsLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
-}: {
-  children: React.ReactNode;
 }) => {
   return (
-    <TermsAndConditionsWrapper>
+    <CenteredLayout>
       <TermsAndConditionsHeader>Terms And Conditions</TermsAndConditionsHeader>
       <TermsAndConditionsOutlet>{children}</TermsAndConditionsOutlet>
-    </TermsAndConditionsWrapper>
+    </CenteredLayout>
   );
 };
 

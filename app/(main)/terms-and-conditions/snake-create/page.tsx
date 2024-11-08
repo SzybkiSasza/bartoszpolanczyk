@@ -1,4 +1,5 @@
 import React from 'react';
+import { List } from '../components/List/List';
 import { Paragraph } from '../components/Paragraph/Paragraph';
 import { SectionHeader } from '../components/SectionHeader/SectionHeader';
 
@@ -47,13 +48,13 @@ const SnakeCreateTC: React.FC = () => {
         Link to privacy policy of third party service providers used by the
         game:
       </Paragraph>
-      <ul>
+      <List>
         <li>
           <a href="https://www.google.com/policies/privacy/" target="_blank">
             Google Play Services
           </a>
         </li>
-      </ul>
+      </List>
       {/*  Log Data */}
       <SectionHeader>Log Data</SectionHeader>
       <Paragraph>
@@ -86,14 +87,12 @@ const SnakeCreateTC: React.FC = () => {
         I may employ third-party companies and individuals due to the following
         reasons:
       </Paragraph>
-      <Paragraph>
-        <ul>
-          <li>To facilitate our Service;</li>
-          <li>To provide the Service on our behalf;</li>
-          <li>To perform Service-related services; or</li>
-          <li>To assist us in analyzing how our Service is used.</li>
-        </ul>
-      </Paragraph>
+      <List>
+        <li>To facilitate our Service;</li>
+        <li>To provide the Service on our behalf;</li>
+        <li>To perform Service-related services; or</li>
+        <li>To assist us in analyzing how our Service is used.</li>
+      </List>
       <Paragraph>
         I want to inform users of this Service that these third parties have
         access to your Personal Information. The reason is to perform the tasks
