@@ -11,9 +11,12 @@ const MainLayoutContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #cccccc;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: auto;
 `;
 
-const MainLayout = ({ children }: { children: React.ReactNode }) => {
+const MainLayout: React.FC = ({ children }: { children: React.ReactNode }) => {
   return <MainLayoutContainer>{children}</MainLayoutContainer>;
 };
 
