@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { MOBILE_WIDTH_BREAKPOINT } from '../../../constants';
-import { getRandomNumber } from '../../../utils/random';
+import { MOBILE_WIDTH_BREAKPOINT } from '../../constants';
+import { getRandomNumber } from '../../utils/random';
 
 const SCANLINE_OPACITY_MIN = 0.4;
 const SCANLINE_OPACITY_MAX = 0.6;
@@ -45,7 +45,8 @@ export const TvOverlay: React.FC = () => {
       if (scanLinesOpacity !== SCANLINE_OPACITY_MAX) {
         setScanLinesOpacity(SCANLINE_OPACITY_MAX);
       } else {
-        const isRandomBlink = Math.random() <= SCANLINE_RANDOM_BLINK_PROBABILITY;
+        const isRandomBlink =
+          Math.random() <= SCANLINE_RANDOM_BLINK_PROBABILITY;
         if (isRandomBlink) {
           const newOpacity = getRandomNumber(0, SCANLINE_OPACITY_MIN);
           setScanLinesOpacity(newOpacity);

@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { MOBILE_WIDTH_BREAKPOINT } from '../../../constants';
-import { pressStart2P } from '../../../fonts';
-import { getRandomNumber } from '../../../utils/random';
+import { MOBILE_WIDTH_BREAKPOINT } from '../../constants';
+import { pressStart2P } from '../../fonts';
+import { getRandomNumber } from '../../utils/random';
 import {
   ElementState,
   getBannerAnimStyle,
@@ -22,6 +22,15 @@ const SHAKING_INTERVAL_MIN = 5;
 const SHAKING_INTERVAL_MAX = 30;
 
 const BannerWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`;
+
+const AnimatedBanner = styled.div`
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 10px;
@@ -136,8 +145,8 @@ export const Banner: React.FC = () => {
   }, [shakingLoop]);
 
   return (
-    <>
-      <BannerWrapper
+    <BannerWrapper>
+      <AnimatedBanner
         className={pressStart2P.className}
         style={getBannerAnimStyle(bannerAnimState)}
       >
@@ -145,7 +154,7 @@ export const Banner: React.FC = () => {
         <SecondaryHeader $isVisible={isInsertCoinVisible}>
           Insert c<StyledCoin>o</StyledCoin>in
         </SecondaryHeader>
-      </BannerWrapper>
-    </>
+      </AnimatedBanner>
+    </BannerWrapper>
   );
 };
