@@ -17,7 +17,7 @@ const CenteredBody = styled.div<{ $maxWidth?: number }>`
   }
 `;
 
-export const CenteredLayout: React.FC<{ children: React.ReactNode }> = ({
+export const CenteredColumnLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   return (

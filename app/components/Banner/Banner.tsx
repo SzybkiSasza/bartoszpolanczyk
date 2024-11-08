@@ -22,6 +22,14 @@ const SHAKING_INTERVAL_MIN = 5;
 const SHAKING_INTERVAL_MAX = 30;
 
 const BannerWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
+
+const AnimatedBanner = styled.div`
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 10px;
@@ -30,7 +38,6 @@ const BannerWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   text-shadow: 0 0 30px;
-  height: 100%;
 `;
 
 const PrimaryHeader = styled.h1`
@@ -137,8 +144,8 @@ export const Banner: React.FC = () => {
   }, [shakingLoop]);
 
   return (
-    <>
-      <BannerWrapper
+    <BannerWrapper>
+      <AnimatedBanner
         className={pressStart2P.className}
         style={getBannerAnimStyle(bannerAnimState)}
       >
@@ -146,7 +153,7 @@ export const Banner: React.FC = () => {
         <SecondaryHeader $isVisible={isInsertCoinVisible}>
           Insert c<StyledCoin>o</StyledCoin>in
         </SecondaryHeader>
-      </BannerWrapper>
-    </>
+      </AnimatedBanner>
+    </BannerWrapper>
   );
 };
